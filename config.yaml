@@ -1,0 +1,20 @@
+name: "Airplay 2 for Home Assistant"
+description: "Adds Airplay 2 capabilities to Home Assistant"
+version: "0.0.7"
+slug: "shairport"
+init: false
+arch:
+  - amd64
+  - armv7
+  - armhf
+boot: "auto"
+host_network: true
+audio: true
+map:
+  - "config:rw"
+options:
+  airplay_name: "Hass.io"
+  offset: "0.0"
+schema:
+  airplay_name: str
+  offset: str
