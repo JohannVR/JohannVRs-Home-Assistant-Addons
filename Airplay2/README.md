@@ -1,10 +1,15 @@
 # Airplay 2
 
-This Home Assistant addon allows you to use the device,
-running Home Assistant as an Airplay 2 receiver.
-This is made possible by the "[Shairport-Sync](https://github.com/mikebrady/shairport-sync)" audio player
-made by mikebrady.
+This Home Assistant addon allows your device to function as an AirPlay 2 receiver.
+Stream audio directly from your iPhone, iPad, or Mac to speakers connected to your Home Assistant setup.
 
-This Addon is just Debian Container with the Airplay receiver pre-installed,
-this leads to the image being quite large in comparison to other addons (≈ 750 MB).
-This could probably be reduced using an Alpine image.
+### Key Features:
+
+* **AirPlay 2 Compatibility:** Play audio from Apple devices on your Home Assistant system.
+* **Simple Integration:** Integrates seamlessly into your existing Home Assistant environment.
+
+### Technical Notes:
+
+* **Shairport-Sync:** Utilizes the [Shairport-Sync](https://github.com/mikebrady/shairport-sync) library by mikebrady for AirPlay 2 functionality.
+* **Debian Container:** Built using a Debian container (may be larger than some addons). Future updates may explore smaller image sizes for faster installation.
+* **Initial Setup Time:** The initial installation may take longer due to the image building process.
