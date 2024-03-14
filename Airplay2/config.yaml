@@ -1,5 +1,6 @@
 name: "Airplay 2 for Home Assistant"
 description: "Adds Airplay 2 capabilities to Home Assistant"
+url: https://github.com/JohannVR/JohannVRs-Home-Assistant-Addons/tree/main/Airplay2
 version: "0.0.7"
 slug: "shairport"
 init: false
