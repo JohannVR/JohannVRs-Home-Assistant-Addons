@@ -8,6 +8,7 @@ arch:
   - amd64
   - armv7
   - armhf
+  - aarch64
 boot: "auto"
 host_network: true
 audio: true
@@ -16,6 +17,14 @@ map:
 options:
   airplay_name: "Hass.io"
   offset: "0.0"
+  enabled: "no"
+  mqtt_host: "core-mosquitto"
+  mqtt_username: "user"
+  mqtt_password: "password"
 schema:
   airplay_name: str
   offset: str
+  enabled: str
+  mqtt_host: str
+  mqtt_username: str
+  mqtt_password: str
