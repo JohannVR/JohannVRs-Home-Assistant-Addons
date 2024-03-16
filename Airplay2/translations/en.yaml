@@ -7,3 +7,7 @@ configuration:
     name: Playback offset
     description: >-
       Can be used to adjust syncing issues, can also be set to negative values.
+  enabled:
+    name: Enable MQTT
+    description: >-
+      Set to "no" to disable MQTT, and to "yes" to enable it.

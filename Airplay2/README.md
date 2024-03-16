@@ -6,7 +6,7 @@ Stream audio directly from your iPhone, iPad, or Mac to speakers connected to yo
 ### Key Features:
 
 * **AirPlay 2 Compatibility:** Play audio from Apple devices on your Home Assistant system.
-* **Simple Integration:** Integrates seamlessly into your existing Home Assistant environment.
+* **MQTT Integration:** Sends out status reports to the "airplay2" topic when enabled. Check out the [docs](https://github.com/mikebrady/shairport-sync/blob/master/MQTT.md).
 
 ### Technical Notes:
 
