@@ -25,4 +25,4 @@ schema:
   enabled: str
   mqtt_host: str
   mqtt_username: str
-  mqtt_password: str?
+  mqtt_password: password
