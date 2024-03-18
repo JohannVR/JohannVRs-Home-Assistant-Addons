@@ -11,5 +11,12 @@ Stream audio directly from your iPhone, iPad, or Mac to speakers connected to yo
 ### Technical Notes:
 
 * **Shairport-Sync:** Utilizes the [Shairport-Sync](https://github.com/mikebrady/shairport-sync) library by mikebrady for AirPlay 2 functionality.
-* **Debian Container:** Built using a Debian image (may be larger than some addons). Future updates may explore smaller image sizes for faster installation.
-* **Initial Setup Time:** The initial installation may take longer due to the image building process.
+* **Debian Container:** Built using a Debian image (may be larger than some addons).
+
+##### Installation
+
+To install this addon, you must first add its repository URL to your Home Assistant instance.
+To do so, add the repository URL below to the Home Assistant add-on store:
+
+`https://github.com/JohannVR/JohannVRs-Home-Assistant-Addons`
+

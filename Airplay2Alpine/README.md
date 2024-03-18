@@ -12,3 +12,10 @@ Stream audio directly from your iPhone, iPad, or Mac to speakers connected to yo
 
 * **Shairport-Sync:** Utilizes the [Shairport-Sync](https://github.com/mikebrady/shairport-sync) library by mikebrady for AirPlay 2 functionality.
 * **Alpine Container:** Built using an Apline image (might lead to compatibility issues, use Debian version in that case)
+
+##### Installation
+
+To install this addon, you must first add its repository URL to your Home Assistant instance.
+To do so, add the repository URL below to the Home Assistant add-on store:
+
+`https://github.com/JohannVR/JohannVRs-Home-Assistant-Addons`
