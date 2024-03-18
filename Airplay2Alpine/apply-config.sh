@@ -136,7 +136,7 @@ sed -i "275s/.*/        password = $quoted_value/" "$config_file"
 ################################################### audio backend ###################################################
 
 # Replace line in config file using sed (target 9th line)
-sed -i "72s/.*/        output_backend = \"pa\"/" "$config_file"
+sed -i "19s/.*/        output_backend = \"pa\"/" "$config_file"
 
 ##########################
 fi
