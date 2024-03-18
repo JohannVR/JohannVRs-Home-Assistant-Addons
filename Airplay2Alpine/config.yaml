@@ -24,5 +24,5 @@ schema:
   enabled: str
   mqtt_host: str
   mqtt_username: str
-  mqtt_password: 
+  mqtt_password: password
 image: "johannvr/ha-airplay2-{arch}-alpine"
