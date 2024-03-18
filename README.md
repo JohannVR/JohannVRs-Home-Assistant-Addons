@@ -2,7 +2,7 @@
 
 ## Addons
 
-* Airplay2 - use Home Assistant Host as Airplay 2 receiver.
+* [Airplay2](https://github.com/JohannVR/JohannVRs-Home-Assistant-Addons/tree/main/Airplay2Alpine) - use Home Assistant Host as Airplay 2 receiver. ([Debian-version](https://github.com/JohannVR/JohannVRs-Home-Assistant-Addons/tree/main/Airplay2))
 
 ## Installation
 
