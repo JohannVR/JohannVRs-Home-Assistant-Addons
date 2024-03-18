@@ -3,6 +3,8 @@
 This Home Assistant addon allows your device to function as an AirPlay 2 receiver.
 Stream audio directly from your iPhone, iPad, or Mac to speakers connected to your Home Assistant setup.
 
+<img width=25% src="logo.png">
+
 ### Key Features:
 
 * **AirPlay 2 Compatibility:** Play audio from Apple devices on your Home Assistant system.
