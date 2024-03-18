@@ -11,5 +11,4 @@ Stream audio directly from your iPhone, iPad, or Mac to speakers connected to yo
 ### Technical Notes:
 
 * **Shairport-Sync:** Utilizes the [Shairport-Sync](https://github.com/mikebrady/shairport-sync) library by mikebrady for AirPlay 2 functionality.
-* **Debian Container:** Built using a Debian image (may be larger than some addons). Future updates may explore smaller image sizes for faster installation.
-* **Initial Setup Time:** The initial installation may take longer due to the image building process.
+* **Alpine Container:** Built using a Apline image (might lead to compatibility issues, use Debian version in that case)
