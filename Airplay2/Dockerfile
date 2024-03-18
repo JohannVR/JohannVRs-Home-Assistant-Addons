@@ -40,13 +40,7 @@ COPY --from=builder /usr/local/share/man/man7 /usr/share/man/man7
 COPY --from=builder /usr/local/bin/nqptp /usr/local/bin/nqptp
 COPY --from=builder etc/shairport-sync.conf /etc/
 COPY --from=builder etc/shairport-sync.conf.sample /etc/
-
-RUN mkdir /alacfiles
-
-COPY --from=builder /usr/local/lib/libalac.* /alacfiles/
-
-COPY copy-alac.sh copy-alac.sh
-RUN chmod +x copy-alac.sh && ./copy-alac.sh
+COPY --from=builder /usr/local/lib/libalac.* /usr/lib/
 
 RUN mkdir -p /var/log/supervisor
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
