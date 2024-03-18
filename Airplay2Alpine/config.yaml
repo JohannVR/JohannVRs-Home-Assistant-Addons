@@ -18,6 +18,7 @@ options:
   mqtt_host: "core-mosquitto"
   mqtt_username: "user"
   mqtt_password: "password"
+  mqtt_publish_cover: "no"
 schema:
   airplay_name: str
   offset: str
@@ -25,4 +26,5 @@ schema:
   mqtt_host: str
   mqtt_username: str
   mqtt_password: password
+  mqtt_publish_cover: str
 image: "johannvr/ha-airplay2-{arch}-alpine"
