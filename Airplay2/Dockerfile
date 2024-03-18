@@ -43,7 +43,7 @@ COPY --from=builder etc/shairport-sync.conf.sample /etc/
 
 RUN mkdir /alacfiles
 
-COPY --from=builder /usr/local/lib/libalac.* /alacfiles
+COPY --from=builder /usr/local/lib/libalac.* /alacfiles/
 
 COPY copy-alac.sh copy-alac.sh
 RUN chmod +x copy-alac.sh && ./copy-alac.sh
