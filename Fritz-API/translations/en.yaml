@@ -1,0 +1,33 @@
+configuration:
+  repeater_ip:
+    name: Repeater IP
+    description: >-
+      IP address of the Repeater 
+  repeater_login:
+    name: Repeater Login Name
+    description: >-
+      Login of the Repeater (usually defaults to "admin")
+  repeater_password:
+    name: Repeater Password
+    description: >-
+      Password of the Repeater
+  mqtt_ip:
+    name: MQTT IP
+    description: >-
+      IP Address of MQTT Broker (127.0.0.1 usually works)
+  mqtt_user:
+    name: MQTT user
+    description: >-
+      Username of MQTT Broker
+  mqtt_password:
+    name: MQTT password
+    description: >-
+      Password of MQTT Broker
+  device_name_list:
+    name: Device Names
+    description: >-
+      Comma seperated list of the device names to use. Keep these simple, otherwise errors might occur (letters and underscores are fine)
+  device_mac_list:
+    name: MAC Adresses
+    description: >-
+      Comma seperated list of the device mac addresses (lower-case and use colons)
