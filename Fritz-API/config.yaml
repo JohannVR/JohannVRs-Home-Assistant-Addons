@@ -1,5 +1,6 @@
 name: "Fritz 1200 Device Tracker"
 description: "Uses the build-in API of the Fritz 1200 repeater to track connected devices"
+url: https://github.com/JohannVR/JohannVRs-Home-Assistant-Addons/tree/main/Fritz-API
 version: "1.0.0"
 slug: "fritzapitracker"
 init: false
