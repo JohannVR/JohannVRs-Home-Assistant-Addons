@@ -36,7 +36,7 @@ RUN apt -y install --no-install-recommends systemd avahi-daemon \
     libplist-dev libpulse-dev libavahi-client-dev libconfig-dev libpopt-dev
 
 COPY --from=builder /usr/local/bin/shairport-sync /usr/local/bin/shairport-sync
-COPY --from=builder /usr/local/share/man/man7 /usr/share/man/man7
+#COPY --from=builder /usr/local/share/man/man7 /usr/share/man/man7
 COPY --from=builder /usr/local/bin/nqptp /usr/local/bin/nqptp
 COPY --from=builder etc/shairport-sync.conf /etc/
 COPY --from=builder etc/shairport-sync.conf.sample /etc/
