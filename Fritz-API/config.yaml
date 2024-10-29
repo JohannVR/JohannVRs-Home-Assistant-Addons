@@ -1,6 +1,5 @@
 name: "Fritz 1200 Device Tracker"
 description: "Uses the build-in API of the Fritz 1200 repeater to track connected devices"
-url: https://github.com/JohannVR/JohannVRs-Home-Assistant-Addons/tree/main/Fritz-API
 version: "1.0.0"
 slug: "fritzapitracker"
 init: false
@@ -19,6 +18,9 @@ options:
   mqtt_password: "password"
   device_name_list: "device1, device2"
   device_mac_list: "00:11:22:33:44:55, aa:bb:cc:dd:ee:ff"
+  send_error_message: "false"
+  chat_id: ""
+  bot_token: ""
 schema:
   repeater_ip: str
   repeater_login: str
@@ -28,3 +30,6 @@ schema:
   mqtt_password: password
   device_name_list: str
   device_mac_list: str
+  send_error_message: str
+  chat_id: str
+  bot_token: str
