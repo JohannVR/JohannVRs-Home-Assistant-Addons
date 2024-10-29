@@ -3,6 +3,7 @@ import paho.mqtt.client as mqtt
 import requests
 import json
 import time
+import sys
 
 ### import config
 f = open("/data/options.json", "r")
@@ -17,6 +18,9 @@ MQTT_USER = options.split('"mqtt_user": "')[1].split('"')[0]
 MQTT_PASSWORD = options.split('"mqtt_password": "')[1].split('"')[0]
 TOPICS = [item.strip() for item in (options.split('"device_name_list": "')[1].split('"')[0].split(","))]
 TARGET_MACS = [item.strip() for item in (options.split('"device_mac_list": "')[1].split('"')[0].split(","))]
+SEND_ERROR_MESSAGE = options.split('"send_error_message": "')[1].split('"')[0]
+CHAT_ID = options.split('"chat_id": "')[1].split('"')[0]
+BOT_TOKEN = options.split('"bot_token": "')[1].split('"')[0]
 
 
 
@@ -35,14 +39,22 @@ def get_endpoint():
     endpoint = fc.call_action("WLANConfiguration1", "X_AVM-DE_GetWLANDeviceListPath")
     return(endpoint["NewX_AVM-DE_WLANDeviceListPath"])
 
+def send_error_message():
+    if SEND_ERROR_MESSAGE == "true":
+        message = "FritzAPI error"
+        url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage?chat_id={CHAT_ID}&text={message}"
+        requests.get(url).json()
+
 endpoint = get_endpoint()
 
 print(endpoint)
 
 while True:
-    try:
+try:
         res = requests.get('http://' + FRITZ_IP + ':49000' + endpoint, auth=(FRITZ_USER, FRITZ_PW))
-
+        if res.text.find("503 Service Unavailable") != -1:
+            send_error_message()
+            sys.exit()
         devices = res.text.split("<Item>")
     except:
         print("error... getting new endpoint")
