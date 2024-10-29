@@ -50,7 +50,7 @@ endpoint = get_endpoint()
 print(endpoint)
 
 while True:
-try:
+    try:
         res = requests.get('http://' + FRITZ_IP + ':49000' + endpoint, auth=(FRITZ_USER, FRITZ_PW))
         if res.text.find("503 Service Unavailable") != -1:
             send_error_message()
