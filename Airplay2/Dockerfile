@@ -22,7 +22,7 @@ RUN cd .. \
      && git clone https://github.com/mikebrady/shairport-sync.git \
      && cd shairport-sync \
      && autoreconf -fi \
-     && ./configure --sysconfdir=/etc --with-pa --with-mqtt-client --with-soxr --with-avahi --with-ssl=openssl --with-systemd --with-airplay-2 --with-apple-alac\
+     && ./configure --sysconfdir=/etc --with-pa --with-mqtt-client --with-soxr --with-avahi --with-ssl=openssl --with-systemd --with-airplay-2 --with-apple-alac --with-alsa\
      && make \
      && make install
 
