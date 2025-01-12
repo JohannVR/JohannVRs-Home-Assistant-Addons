@@ -1,8 +1,8 @@
-FROM python:3.8.19-slim-bullseye
+FROM python:3-alpine3.20
 
 ADD fritz-mqtt.py .
 
-RUN pip install requests paho-mqtt fritzconnection
+RUN pip install requests paho-mqtt
 
 CMD ["python","-u","fritz-mqtt.py"]
 
