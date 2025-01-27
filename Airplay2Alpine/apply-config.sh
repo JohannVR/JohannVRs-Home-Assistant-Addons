@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 FILE=/data/options.json
 if test -f "$FILE"; then
@@ -44,10 +44,9 @@ fi
 
 # Escape backslashes and dollar signs for safe sed usage
 escaped_value=$(echo "$value" | sed 's/\\//g' | sed 's/\$/\\\\$/g')
-quoted_value="\"$escaped_value\""
 
 # Replace line in config file using sed (target 9th line)
-sed -i "72s/.*/        audio_backend_latency_offset_in_seconds = $quoted_value/" "$config_file"
+sed -i "72s/.*/        audio_backend_latency_offset_in_seconds = $escaped_value/" "$config_file"
 
 ################################################### mqtt setting ###################################################
 
@@ -153,7 +152,6 @@ quoted_value="\"$escaped_value\""
 
 # Replace line in config file using sed (target 9th line)
 sed -i "287s/.*/        publish_cover = $quoted_value/" "$config_file"
-
 
 ################################################### audio backend ###################################################
 
