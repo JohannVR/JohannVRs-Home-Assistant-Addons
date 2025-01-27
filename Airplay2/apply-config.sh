@@ -46,7 +46,7 @@ fi
 escaped_value=$(echo "$value" | sed 's/\\//g' | sed 's/\$/\\\\$/g')
 quoted_value="\"$escaped_value\""
 
-# Replace line in config file using sed (target 9th line)
+# Replace line in config file using sed (target 72nd line)
 sed -i "72s/.*/        audio_backend_latency_offset_in_seconds = $quoted_value/" "$config_file"
 
 ################################################### mqtt setting ###################################################
@@ -67,8 +67,8 @@ fi
 escaped_value=$(echo "$value" | sed 's/\\//g' | sed 's/\$/\\\\$/g')
 quoted_value="\"$escaped_value\""
 
-# Replace line in config file using sed (target 9th line)
-sed -i "271s/.*/        enabled = $quoted_value/" "$config_file"
+# Replace line in config file using sed (target 273rd line)
+sed -i "273s/.*/        enabled = $quoted_value/" "$config_file"
 
 ################################################### mqtt hostname ###################################################
 
@@ -88,8 +88,8 @@ fi
 escaped_value=$(echo "$value" | sed 's/\\//g' | sed 's/\$/\\\\$/g')
 quoted_value="\"$escaped_value\""
 
-# Replace line in config file using sed (target 9th line)
-sed -i "272s/.*/        hostname = $quoted_value/" "$config_file"
+# Replace line in config file using sed (target 274th line)
+sed -i "274s/.*/        hostname = $quoted_value/" "$config_file"
 
 ################################################### mqtt username ###################################################
 
@@ -109,8 +109,8 @@ fi
 escaped_value=$(echo "$value" | sed 's/\\//g' | sed 's/\$/\\\\$/g')
 quoted_value="\"$escaped_value\""
 
-# Replace line in config file using sed (target 9th line)
-sed -i "274s/.*/        username = $quoted_value/" "$config_file"
+# Replace line in config file using sed (target 276th line)
+sed -i "276s/.*/        username = $quoted_value/" "$config_file"
 
 ################################################### mqtt password ###################################################
 
@@ -130,8 +130,8 @@ fi
 escaped_value=$(echo "$value" | sed 's/\\//g' | sed 's/\$/\\\\$/g')
 quoted_value="\"$escaped_value\""
 
-# Replace line in config file using sed (target 9th line)
-sed -i "275s/.*/        password = $quoted_value/" "$config_file"
+# Replace line in config file using sed (target 277th line)
+sed -i "277s/.*/        password = $quoted_value/" "$config_file"
 
 ################################################### mqtt publish cover ###################################################
 
@@ -151,8 +151,8 @@ fi
 escaped_value=$(echo "$value" | sed 's/\\//g' | sed 's/\$/\\\\$/g')
 quoted_value="\"$escaped_value\""
 
-# Replace line in config file using sed (target 9th line)
-sed -i "287s/.*/        publish_cover = $quoted_value/" "$config_file"
+# Replace line in config file using sed (target 289th line)
+sed -i "289s/.*/        publish_cover = $quoted_value/" "$config_file"
 
 ################################################### audio backend ###################################################
 
