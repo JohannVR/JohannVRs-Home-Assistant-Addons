@@ -64,9 +64,10 @@ fi
 
 # Escape backslashes and dollar signs for safe sed usage
 escaped_value=$(echo "$value" | sed 's/\\//g' | sed 's/\$/\\\\$/g')
+quoted_value="\"$escaped_value\""
 
 # Replace line in config file using sed (target 18th line)
-sed -i "18s/.*/        interpolation =  $escaped_value/" "$config_file"
+sed -i "18s/.*/        interpolation =  $quoted_value/" "$config_file"
 
 ################################################### mqtt setting ###################################################
 
