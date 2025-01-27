@@ -59,6 +59,7 @@ WORKDIR /
 FROM alpine:3.17
 
 RUN apk -U add \
+        dbus \ 
         alsa-lib \
         avahi \
         avahi-tools \

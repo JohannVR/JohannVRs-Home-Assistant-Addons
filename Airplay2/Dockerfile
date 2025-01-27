@@ -47,6 +47,7 @@ COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY apply-config.sh apply-config.sh
 COPY start-dbus.sh start-dbus.sh
 COPY shairport-sync.conf /etc/shairport-sync.conf
+RUN apt -y install libasound2
 RUN chmod +x apply-config.sh
 RUN chmod +x start-dbus.sh
 CMD ["/usr/bin/supervisord"]
