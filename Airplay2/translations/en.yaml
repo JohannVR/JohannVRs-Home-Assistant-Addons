@@ -7,6 +7,10 @@ configuration:
     name: Playback offset
     description: >-
       Can be used to adjust syncing issues, can also be set to negative values.
+  interpolation:
+    name: Interpolation
+    description: >-
+      Leave on "auto" or check the Shairport-sync docs for more info.
   enabled:
     name: Enable MQTT
     description: >-
