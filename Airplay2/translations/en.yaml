@@ -18,4 +18,4 @@ configuration:
   mqtt_publish_cover:
     name: MQTT publish cover
     description: >-
-      When set to yes, it allows MQTT to transmit the cover (might lead to more load on the MQTT borker)
+      When set to yes, it allows MQTT to transmit the cover (might lead to more load on the MQTT broker)
