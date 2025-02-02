@@ -30,10 +30,10 @@ jobs:
             -v ${{ github.workspace }}/Airplay2:/data \
             -v /var/run/docker.sock:/var/run/docker.sock:ro \
             homeassistant/amd64-builder -t /data --amd64 --test \
-            -i ha-airplay2-amd64-debian -d johannvr
-          docker tag johannvr/ha-airplay2-amd64-debian:${{ steps.get_version.outputs.version }} johannvr/ha-airplay2-amd64-debian:latest
-          docker push johannvr/ha-airplay2-amd64-debian:${{ steps.get_version.outputs.version }}
-          docker push johannvr/ha-airplay2-amd64-debian:latest
+            -i ha-airplay2-amd64-debian -d ${{ secrets.DOCKERHUB_USERNAME }}
+          docker tag ${{ secrets.DOCKERHUB_USERNAME }}/ha-airplay2-amd64-debian:${{ steps.get_version.outputs.version }} ${{ secrets.DOCKERHUB_USERNAME }}/ha-airplay2-amd64-debian:latest
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/ha-airplay2-amd64-debian:${{ steps.get_version.outputs.version }}
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/ha-airplay2-amd64-debian:latest
 
       - name: Build and Publish armv7 image
         run: |
@@ -41,10 +41,10 @@ jobs:
             -v ${{ github.workspace }}/Airplay2:/data \
             -v /var/run/docker.sock:/var/run/docker.sock:ro \
             homeassistant/amd64-builder -t /data --armv7 --test \
-            -i ha-airplay2-armv7-debian -d johannvr
-          docker tag johannvr/ha-airplay2-armv7-debian:${{ steps.get_version.outputs.version }} johannvr/ha-airplay2-armv7-debian:latest
-          docker push johannvr/ha-airplay2-armv7-debian:${{ steps.get_version.outputs.version }}
-          docker push johannvr/ha-airplay2-armv7-debian:latest
+            -i ha-airplay2-armv7-debian -d ${{ secrets.DOCKERHUB_USERNAME }}
+          docker tag ${{ secrets.DOCKERHUB_USERNAME }}/ha-airplay2-armv7-debian:${{ steps.get_version.outputs.version }} ${{ secrets.DOCKERHUB_USERNAME }}/ha-airplay2-armv7-debian:latest
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/ha-airplay2-armv7-debian:${{ steps.get_version.outputs.version }}
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/ha-airplay2-armv7-debian:latest
 
       - name: Build and Publish aarch64 image
         run: |
@@ -52,7 +52,7 @@ jobs:
             -v ${{ github.workspace }}/Airplay2:/data \
             -v /var/run/docker.sock:/var/run/docker.sock:ro \
             homeassistant/amd64-builder -t /data --aarch64 --test \
-            -i ha-airplay2-aarch64-debian -d johannvr
-          docker tag johannvr/ha-airplay2-aarch64-debian:${{ steps.get_version.outputs.version }} johannvr/ha-airplay2-aarch64-debian:latest
-          docker push johannvr/ha-airplay2-aarch64-debian:${{ steps.get_version.outputs.version }}
-          docker push johannvr/ha-airplay2-aarch64-debian:latest
+            -i ha-airplay2-aarch64-debian -d ${{ secrets.DOCKERHUB_USERNAME }}
+          docker tag ${{ secrets.DOCKERHUB_USERNAME }}/ha-airplay2-aarch64-debian:${{ steps.get_version.outputs.version }} ${{ secrets.DOCKERHUB_USERNAME }}/ha-airplay2-aarch64-debian:latest
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/ha-airplay2-aarch64-debian:${{ steps.get_version.outputs.version }}
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/ha-airplay2-aarch64-debian:latest
