@@ -22,4 +22,4 @@ jobs:
           args: |
             --all \
             --target Airplay2 \
-            --docker-hub johannvr/ha-airplay2-debian
+            --docker-hub ${{ secrets.DOCKERHUB_USERNAME }}/ha-airplay2-debian
