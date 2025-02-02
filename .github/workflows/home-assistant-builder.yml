@@ -24,6 +24,9 @@ jobs:
         with:
           args: |
             --all \
+            --docker-user ${{ secrets.DOCKERHUB_USERNAME }} \
+            --docker-password ${{ secrets.DOCKERHUB_TOKEN }} \
+            --docker-hub-check \
             --target Airplay2 \
             --docker-hub ${{ secrets.DOCKERHUB_USERNAME }} \
             --image ha-airplay2-{arch}-debian \
