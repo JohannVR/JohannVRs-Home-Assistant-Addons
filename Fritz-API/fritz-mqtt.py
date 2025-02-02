@@ -18,12 +18,15 @@ TARGET_MACS = [item.strip() for item in (options.split('"device_mac_list": "')[1
 
 client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
 client.username_pw_set(MQTT_USER, MQTT_PASSWORD)
+client.reconnect_delay_set(min_delay=1, max_delay=30)
 
-if client.connect(MQTT_IP, 1883, 60) != 0:
-    print("Couldn't connect to the mqtt broker")
 
 def send_state(state, topic):
-    client.publish(topic, state, 0, True)
+    try:
+        client.reconnect()
+        client.publish(topic, state, 1, True)
+    except Exception as e:
+        print(f"MQTT publish error: {e}")
 
 def send_with_auth(mac, ip_address):
     devices = []
@@ -55,6 +58,10 @@ def send_with_auth(mac, ip_address):
         return(True)
     else:
         return(False)
+
+if client.connect(MQTT_IP, 1883, 60) != 0:
+    print("Couldn't connect to the mqtt broker")
+client.loop_start()
     
 people = []
     
@@ -82,7 +89,6 @@ while True:
                     if (people[i][1] == True):
                         print(str(TOPICS[i]) + " disconnected at " + datetime.datetime.now().strftime("%H:%M on the %d.%m.%Y"))
                         people[i][1] = False
-            time.sleep(1)
         errors = 0
     except:
         errors += 1
