@@ -1,4 +1,4 @@
-name: "Publish"
+name: Publish Docker Images
 
 on:
   release:
@@ -11,15 +11,20 @@ jobs:
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v3
+
       - name: Login to DockerHub
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name: Publish
+
+      - name: Publish Docker Images
         uses: home-assistant/builder@master
         with:
           args: |
             --all \
             --target Airplay2 \
-            --docker-hub ${{ secrets.DOCKERHUB_USERNAME }}/ha-airplay2-debian
+            --docker-hub ${{ secrets.DOCKERHUB_USERNAME }} \
+            --image ha-airplay2-{arch}-debian \
+            --version ${{ github.event.release.tag_name }} \
+            --additional-tag latest
