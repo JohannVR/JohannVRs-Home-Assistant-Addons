@@ -27,4 +27,3 @@ jobs:
             --target Airplay2 \
             --docker-hub ${{ secrets.DOCKERHUB_USERNAME }} \
             --image ha-airplay2-{arch}-debian \
-            --version ${{ github.event.release.tag_name }} \
