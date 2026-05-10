@@ -62,9 +62,9 @@ def send_with_auth(mac, ip_address):
 if client.connect(MQTT_IP, 1883, 60) != 0:
     print("Couldn't connect to the mqtt broker")
 client.loop_start()
-    
+
 people = []
-    
+
 for i in range(len(TOPICS)):
     people.append([TOPICS[i], (send_with_auth(TARGET_MACS[i], FRITZ_IP)), 0])
     print("current state: " + str(people[i][0]) + " = " + str(people[i][1]))

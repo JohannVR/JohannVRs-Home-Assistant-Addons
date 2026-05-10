@@ -2,7 +2,7 @@ configuration:
   repeater_ip:
     name: Repeater IP
     description: >-
-      IP address of the Repeater 
+      IP address of the Repeater
   repeater_login:
     name: Repeater Login Name
     description: >-

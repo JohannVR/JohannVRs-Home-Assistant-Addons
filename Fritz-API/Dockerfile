@@ -5,4 +5,3 @@ ADD fritz-mqtt.py .
 RUN pip install requests paho-mqtt
 
 CMD ["python","-u","fritz-mqtt.py"]
-
