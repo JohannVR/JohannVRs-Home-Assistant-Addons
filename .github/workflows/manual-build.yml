@@ -25,7 +25,7 @@ jobs:
     name: Initialize build
     runs-on: ubuntu-latest
     outputs:
-      matrix: ${{ steps.matrix.outputs.matrix }}
+      matrix: ${{ steps.lowercase_matrix.outputs.matrix }}
     steps:
       - uses: actions/checkout@v6
         with:
@@ -37,6 +37,12 @@ jobs:
         with:
           architectures: ${{ env.ARCHITECTURES }}
           image-name: ${{ env.IMAGE_NAME }}
+          
+      - name: Lowercase matrix image names
+        id: lowercase_matrix
+        run: |
+          MATRIX='${{ steps.matrix.outputs.matrix }}'
+          echo "matrix=$(echo "$MATRIX" | jq -c 'walk(if type == "string" then ascii_downcase else . end)')" >> $GITHUB_OUTPUT
 
   build:
     name: Build ${{ matrix.arch }} image
