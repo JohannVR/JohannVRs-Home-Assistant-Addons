@@ -86,6 +86,7 @@ jobs:
         with:
           architectures: ${{ env.ARCHITECTURES }}
           container-registry-password: ${{ secrets.GITHUB_TOKEN }}
+          registry-prefix: ghcr.io/johannvr
           image-name: ${{ env.IMAGE_NAME }}
           image-tags: |
             ${{ env.CUSTOM_TAG }}
