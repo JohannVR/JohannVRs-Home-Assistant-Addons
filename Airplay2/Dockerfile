@@ -102,7 +102,7 @@ RUN autoreconf -i ../
 RUN ../configure --sysconfdir=/etc --with-alsa --with-pulseaudio --with-soxr --with-avahi --with-ssl=openssl \
         --with-airplay-2 --with-metadata --with-dummy --with-pipe --with-dbus-interface \
         --with-stdout --with-mpris-interface --with-mqtt-client \
-        --with-convolution --with-pipewire --with-pa
+        --with-convolution --with-pipewire --with-pulseaudio --with-apple-alac
 RUN make -j $(nproc)
 RUN DESTDIR=install make install
 WORKDIR /
