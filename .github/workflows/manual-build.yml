@@ -1,13 +1,31 @@
-name: Test-Build
+<<<<<<< HEAD
+name: Manual Build
+=======
+name: Build
+>>>>>>> b8ba720 (added manual build action)
 
 on:
-  release:
-    types: [published]
   workflow_dispatch:
+    inputs:
+      tag_name:
+<<<<<<< HEAD
+        description: 'Image tag to use for the build (e.g., "v1.0.0" or "latest")'
+        required: true
+        default: 'latest'
+      branch_name:
+        description: 'Branch to build from'
+        required: true
+        default: 'main'
+=======
+        description: 'The tag to apply to the image (e.g., v1.2.3)'
+        required: true
+        default: 'latest'
+>>>>>>> b8ba720 (added manual build action)
 
 env:
   ARCHITECTURES: '["amd64", "aarch64"]'
   IMAGE_NAME: ha-airplay2
+  CUSTOM_TAG: ${{ github.event.inputs.tag_name }}
 
 permissions:
   contents: read
@@ -20,6 +38,11 @@ jobs:
       matrix: ${{ steps.matrix.outputs.matrix }}
     steps:
       - uses: actions/checkout@v6
+<<<<<<< HEAD
+        with:
+          ref: ${{ github.event.inputs.branch_name }}
+=======
+>>>>>>> b8ba720 (added manual build action)
 
       - name: Get build matrix
         id: matrix
@@ -41,6 +64,11 @@ jobs:
       matrix: ${{ fromJSON(needs.init.outputs.matrix) }}
     steps:
       - uses: actions/checkout@v6
+<<<<<<< HEAD
+        with:
+          ref: ${{ github.event.inputs.branch_name }}
+=======
+>>>>>>> b8ba720 (added manual build action)
 
       - name: Build image
         uses: home-assistant/builder/actions/build-image@2026.03.2
@@ -49,10 +77,9 @@ jobs:
           container-registry-password: ${{ secrets.GITHUB_TOKEN }}
           image: ${{ matrix.image }}
           image-tags: |
-            ${{ github.event.release.tag_name }}
-            latest
+            ${{ env.CUSTOM_TAG }}
           push: "true"
-          version: ${{ github.event.release.tag_name }}
+          version: ${{ env.CUSTOM_TAG }}
 
   manifest:
     name: Publish multi-arch manifest
@@ -69,5 +96,4 @@ jobs:
           container-registry-password: ${{ secrets.GITHUB_TOKEN }}
           image-name: ${{ env.IMAGE_NAME }}
           image-tags: |
-            ${{ github.event.release.tag_name }}
-            latest
+            ${{ env.CUSTOM_TAG }}
