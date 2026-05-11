@@ -1,13 +1,17 @@
-name: Test-Build
+name: Build
 
 on:
-  release:
-    types: [published]
   workflow_dispatch:
+    inputs:
+      tag_name:
+        description: 'The tag to apply to the image (e.g., v1.2.3)'
+        required: true
+        default: 'latest'
 
 env:
   ARCHITECTURES: '["amd64", "aarch64"]'
   IMAGE_NAME: ha-airplay2
+  CUSTOM_TAG: ${{ github.event.inputs.tag_name }}
 
 permissions:
   contents: read
@@ -49,10 +53,9 @@ jobs:
           container-registry-password: ${{ secrets.GITHUB_TOKEN }}
           image: ${{ matrix.image }}
           image-tags: |
-            ${{ github.event.release.tag_name }}
-            latest
+            ${{ env.CUSTOM_TAG }}
           push: "true"
-          version: ${{ github.event.release.tag_name }}
+          version: ${{ env.CUSTOM_TAG }}
 
   manifest:
     name: Publish multi-arch manifest
@@ -69,5 +72,4 @@ jobs:
           container-registry-password: ${{ secrets.GITHUB_TOKEN }}
           image-name: ${{ env.IMAGE_NAME }}
           image-tags: |
-            ${{ github.event.release.tag_name }}
-            latest
+            ${{ env.CUSTOM_TAG }}
