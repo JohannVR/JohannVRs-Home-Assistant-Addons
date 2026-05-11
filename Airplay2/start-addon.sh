@@ -26,8 +26,4 @@ else
     exit 1
 fi
 
-ls /
-
-cat /run.sh
-
 exec /run.sh
