@@ -1,0 +1,3 @@
+[submodule "Airplay2/shairport-sync"]
+	path = Airplay2/shairport-sync
+	url = https://github.com/mikebrady/shairport-sync.git
