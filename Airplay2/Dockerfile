@@ -5,6 +5,6 @@ RUN apk add --no-cache envsubst jq
 COPY start-addon.sh /start-addon.sh
 RUN chmod +x /start-addon.sh
 
-ADD shairport-sync.conf.tpl /etc/shairport-sync.conf.tpl
+COPY shairport-sync.conf.tpl /etc/shairport-sync.conf.tpl
 
 ENTRYPOINT ["/start-addon.sh"]
