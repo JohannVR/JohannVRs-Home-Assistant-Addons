@@ -39,7 +39,7 @@ jobs:
         with:
           architectures: ${{ env.ARCHITECTURES }}
           image-name: ${{ env.IMAGE_NAME }}
-          
+
       - name: Lowercase matrix image names
         id: lowercase_matrix
         run: |
