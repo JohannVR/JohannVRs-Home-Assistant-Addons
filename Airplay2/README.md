@@ -21,4 +21,3 @@ To install this addon, you must first add its repository URL to your Home Assist
 To do so, add the repository URL below to the Home Assistant add-on store:
 
 `https://github.com/JohannVR/JohannVRs-Home-Assistant-Addons`
-
