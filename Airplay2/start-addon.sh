@@ -26,4 +26,4 @@ else
     exit 1
 fi
 
-exec /run.sh
+exec /init ./run.sh

@@ -10,7 +10,6 @@ arch:
   - armv7
 boot: "auto"
 host_network: true
-host_dbus: true
 audio: true
 options:
   airplay_name: "Hass.io"
@@ -21,7 +20,7 @@ options:
   mqtt_username: "user"
   mqtt_password: "password"
   mqtt_publish_cover: "no"
-  output_backend: "pulseaudio"
+  output_backend: "pa"
   default_airplay_volume: "-24.0"
 schema:
   airplay_name: str
