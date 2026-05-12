@@ -26,4 +26,18 @@ else
     exit 1
 fi
 
+echo "Removing syslogd from s6-overlay to prevent conflicts..."
+
+# Löscht alle syslogd Verzeichnisse, falls sie existieren
+if [ -d /etc/s6-overlay/s6-rc.d ] && ls /etc/s6-overlay/s6-rc.d/syslogd* >/dev/null 2>&1; then
+    rm -rf /etc/s6-overlay/s6-rc.d/syslogd*
+    echo "Syslogd service directories removed."
+fi
+
+# Löscht die Bundle-Referenz nur, wenn die Datei existiert
+if [ -f /etc/s6-overlay/s6-rc.d/user/contents.d/syslogd-bundle ]; then
+    rm /etc/s6-overlay/s6-rc.d/user/contents.d/syslogd-bundle
+    echo "Syslogd-bundle reference removed from user contents."
+fi
+
 exec /init ./run.sh
