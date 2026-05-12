@@ -1,7 +1,7 @@
 name: "Airplay 2 for Home Assistant"
 description: "Adds Airplay 2 capabilities to Home Assistant"
 url: https://github.com/JohannVR/JohannVRs-Home-Assistant-Addons/tree/main/Airplay2
-version: "2.0.0"
+version: "2.0.1"
 slug: "airplay2"
 init: false
 arch:
@@ -46,4 +46,4 @@ schema:
   resync_threshold_in_seconds: str?
   resync_recovery_time_in_seconds: str?
   audio_backend_buffer_desired_length_in_seconds: str?
-#image: "johannvr/ha-airplay2-{arch}-debian"
+image: ghcr.io/johannvr/{arch}-ha-airplay2
