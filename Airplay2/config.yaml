@@ -10,6 +10,7 @@ arch:
   - armv7
 boot: "auto"
 host_network: true
+host_dbus: true
 audio: true
 options:
   airplay_name: "Hass.io"
