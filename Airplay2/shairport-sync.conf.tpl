@@ -323,7 +323,7 @@ dsp =
 // In those cases, "enabled" and "include_cover_art" will both be "yes" by default
 metadata =
 {
-	enabled = "${enabled}"; // set this to yes to get Shairport Sync to solicit metadata from the source and to pass it on via a pipe
+//	enabled = "no"; // set this to yes to get Shairport Sync to solicit metadata from the source and to pass it on via a pipe
 //	include_cover_art = "yes"; // set to "yes" to get Shairport Sync to solicit cover art from the source and pass it via the pipe. You must also set "enabled" to "yes".
 //	cover_art_cache_directory = "/tmp/shairport-sync/.cache/coverart"; // artwork will be  stored in this directory if the dbus or MPRIS interfaces are enabled or if the MQTT client is in use. Set it to "" to prevent caching, which may be useful on some systems
 //	pipe_name = "/tmp/shairport-sync-metadata";
@@ -347,7 +347,7 @@ metadata =
 
 mqtt =
 {
-//	enabled = "no"; // set this to yes to enable the mqtt-metadata-service
+	enabled = "${enabled}"; // set this to yes to enable the mqtt-metadata-service
 	hostname = "${mqtt_host}"; // Hostname of the MQTT Broker
 //	port = 1883; // Port on the MQTT Broker to connect to
 	username = "${mqtt_username}"; //set this to a string to your username in order to enable username authentication
