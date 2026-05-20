@@ -11,6 +11,23 @@ if [ -f "$CONFIG_PATH" ]; then
     eval $(jq -r 'to_entries | .[] | "export \(.key)=\"\(.value)\""' "$CONFIG_PATH")
 
     echo "Environment variables exported."
+
+    # Set defaults
+    : "${mqtt_topic:=airplay2}"
+    : "${mqtt_publish_parsed:=yes}"
+    : "${mqtt_enable_remote:=no}"
+    : "${volume_max_db:=0.0}"
+    : "${output_format:=auto}"
+    : "${output_rate:=auto}"
+    : "${use_precision_timing:=auto}"
+    : "${disable_standby_mode:=never}"
+    : "${mixer_control_name:=PCM}"
+    : "${mixer_control_index:=0}"
+    : "${volume_control_combined_hardware_priority:=no}"
+    : "${drift_tolerance_in_seconds:=0.002}"
+    : "${resync_threshold_in_seconds:=0.050}"
+    : "${audio_backend_buffer_desired_length_in_seconds:=0.2}"
+
 else
     echo "Error: $CONFIG_PATH not found."
     exit 1

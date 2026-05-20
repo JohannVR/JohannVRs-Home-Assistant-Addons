@@ -1,7 +1,7 @@
 name: "Airplay 2 for Home Assistant"
 description: "Adds Airplay 2 capabilities to Home Assistant"
 url: https://github.com/JohannVR/JohannVRs-Home-Assistant-Addons/tree/main/Airplay2
-version: "2.0.1"
+version: "2.0.2"
 slug: "airplay2"
 init: false
 arch:
@@ -33,17 +33,18 @@ schema:
   mqtt_publish_cover: str
   output_backend: str
   default_airplay_volume: str
+  mqtt_topic: str?
+  mqtt_publish_parsed: str?
+  mqtt_enable_remote: str?
   volume_max_db: str?
   output_format: str?
   output_rate: str?
   use_precision_timing: str?
   disable_standby_mode: str?
-  high_threshold_airplay_volume: str?
   mixer_control_name: str?
-  mixer_control_index: str?
+  mixer_control_index: int?
   volume_control_combined_hardware_priority: str?
   drift_tolerance_in_seconds: str?
   resync_threshold_in_seconds: str?
-  resync_recovery_time_in_seconds: str?
   audio_backend_buffer_desired_length_in_seconds: str?
 image: ghcr.io/johannvr/{arch}-ha-airplay2
