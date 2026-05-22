@@ -1,0 +1,25 @@
+{
+  "extends": [
+    "config:recommended",
+    ":enablePreCommit"
+  ],
+  "packageRules": [
+    {
+      "description": "Automerge pre-commit hooks",
+      "matchManagers": ["pre-commit"],
+      "matchFileNames": [".pre-commit-config.yaml"],
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "automerge": true,
+      "ignoreTests": true
+    },
+    {
+      "description": "Gitea Actions redeploy workflow",
+      "matchManagers": ["github-actions"],
+      "matchPackageNames": ["actions/checkout", "home-assistant/builder/actions/prepare-multi-arch-matrix", "home-assistant/builder/actions/build-image", "home-assistant/builder/actions/publish-multi-arch-manifest"],
+      "matchFileNames": [".github/workflows/home-assistant-builder.yml", ".github/workflows/manual-build.yml"],
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "automerge": true,
+      "ignoreTests": true
+    }
+  ]
+}
