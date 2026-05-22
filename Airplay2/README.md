@@ -10,7 +10,7 @@ Stream audio directly from your iPhone, iPad, or Mac to speakers connected to yo
 * **AirPlay 2 Compatibility:** Play audio from Apple devices on your Home Assistant system.
 * **MQTT Integration:** Sends out status reports to the "airplay2" topic when enabled. Check out the [docs](https://github.com/mikebrady/shairport-sync/blob/master/MQTT.md).
 
-## Why use this? (Example Use Cases)
+### Why use this? (Example Use Cases)
 
 Instead of buying expensive standalone AirPlay speakers, this add-on lets you repurpose your existing hardware and integrate your audio directly into your smart home ecosystem.
 * **The "Dumb" Speaker Upgrade**: Have an old, great-sounding stereo system or bookshelf speakers? Plug a cheap USB sound card or a 3.5mm jack from your HA Host (e.g. Raspberry Pi) into the stereo's AUX port. Your vintage speakers are now a modern AirPlay 2 target.
