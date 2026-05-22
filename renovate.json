@@ -9,7 +9,6 @@
       "description": "Global settings",
       "matchManagers": ["github-actions", "dockerfile", "pre-commit"],
       "automerge": false,
-      "ignoreTests": true
     }
   ]
 }
