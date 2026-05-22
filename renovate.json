@@ -6,6 +6,13 @@
   ],
   "packageRules": [
     {
+      "description": "Fix for Home Assistant Builder Actions",
+      "matchManagers": ["github-actions"],
+      "matchPackageNames": ["home-assistant/builder/actions/**"],
+      "depNameTemplate": "home-assistant/builder",
+      "datasourceTemplate": "github-tags"
+    },
+    {
       "description": "Global settings",
       "matchManagers": ["github-actions", "dockerfile", "pre-commit"],
       "automerge": false,
