@@ -1,4 +1,4 @@
-FROM python:3-alpine3.20
+FROM python:3.14.5-alpine3.23
 
 ADD fritz-mqtt.py .
 
