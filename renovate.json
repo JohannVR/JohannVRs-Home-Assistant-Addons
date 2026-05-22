@@ -3,12 +3,5 @@
   "extends": [
     "config:recommended",
     ":enablePreCommit"
-  ],
-  "packageRules": [
-    {
-      "description": "Global settings",
-      "matchManagers": ["github-actions", "dockerfile", "pre-commit"],
-      "automerge": false,
-    }
   ]
 }
