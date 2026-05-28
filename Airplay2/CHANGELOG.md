@@ -1,3 +1,7 @@
+# v2.0.3
+- **Bug fixes**
+  - Removed audio backend buffer length from config because it caused audio not to play
+
 # v2.0.2
 - **Bug fixes**
   - Fix MQTT topic not being set
