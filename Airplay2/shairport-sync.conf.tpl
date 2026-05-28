@@ -72,7 +72,7 @@ general =
 //		Use it, for example, to compensate for a fixed delay in the audio back end.
 //		E.g. if the output device, e.g. a soundbar, takes 100 ms to process audio, set this to -0.1 to deliver the audio
 //		to the output device 100 ms early, allowing it time to process the audio and output it perfectly in sync.
-	audio_backend_buffer_desired_length_in_seconds = ${audio_backend_buffer_desired_length_in_seconds}; // This is the desired size of the buffer to be maintained in the external output system, e.g. the DAC in ALSA. If set too small, buffer underflow occurs on low-powered machines.
+//	audio_backend_buffer_desired_length_in_seconds = ${audio_backend_buffer_desired_length_in_seconds}; // This is the desired size of the buffer to be maintained in the external output system, e.g. the DAC in ALSA. If set too small, buffer underflow occurs on low-powered machines.
 //		Too long and the response time to volume changes becomes annoying.
 //	audio_decoded_buffer_desired_length_in_seconds = 1.0; // Advanced feature. This is the desired size of the buffer of fully deciphered and decoded audio maintained within Shairport Sync prior to sending it to the external output system , e.g. the DAC in ALSA.
 //		Valid for AirPlay 2 Buffered Audio streams only.
