@@ -1,0 +1,96 @@
+name: Manual Build Legacy Edition Image
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag_name:
+        description: 'Image tag to use for the build (e.g., "v1.0.0" or "latest")'
+        required: true
+        default: 'latest'
+      branch_name:
+        description: 'Branch to build from'
+        required: true
+        default: 'main'
+
+env:
+  ARCHITECTURES: '["amd64", "aarch64"]'
+  IMAGE_NAME: ha-airplay2-legacy
+  CUSTOM_TAG: ${{ github.event.inputs.tag_name }}
+
+permissions:
+  contents: read
+
+jobs:
+  init:
+    name: Initialize build
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.lowercase_matrix.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.inputs.branch_name }}
+          submodules: 'true'
+          fetch-depth: 0
+
+      - name: Get build matrix
+        id: matrix
+        uses: home-assistant/builder/actions/prepare-multi-arch-matrix@2026.03.2
+        with:
+          architectures: ${{ env.ARCHITECTURES }}
+          image-name: ${{ env.IMAGE_NAME }}
+
+      - name: Lowercase matrix image names
+        id: lowercase_matrix
+        run: |
+          MATRIX='${{ steps.matrix.outputs.matrix }}'
+          echo "matrix=$(echo "$MATRIX" | jq -c 'walk(if type == "string" then ascii_downcase else . end)')" >> $GITHUB_OUTPUT
+
+  build:
+    name: Build ${{ matrix.arch }} image
+    needs: init
+    runs-on: ${{ matrix.os }}
+    permissions:
+      contents: read # To check out the code
+      id-token: write # Write needed for Cosign signing (issue OIDC token for signing)
+      packages: write # To push built images to GitHub Container Registry
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.init.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.inputs.branch_name }}
+          submodules: 'true'
+          fetch-depth: 0
+
+      - name: Build image
+        uses: home-assistant/builder/actions/build-image@2026.03.2
+        with:
+          file: Airplay2Legacy/Dockerfile
+          context: Airplay2Legacy/
+          arch: ${{ matrix.arch }}
+          container-registry-password: ${{ secrets.GITHUB_TOKEN }}
+          image: ${{ matrix.image }}
+          image-tags: |
+            ${{ env.CUSTOM_TAG }}
+          push: "true"
+          version: ${{ env.CUSTOM_TAG }}
+
+  manifest:
+    name: Publish multi-arch manifest
+    needs: [init, build]
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write # Write needed for Cosign signing (issue OIDC token for signing)
+      packages: write # To push the manifest to GitHub Container Registry
+    steps:
+      - name: Publish multi-arch manifest
+        uses: home-assistant/builder/actions/publish-multi-arch-manifest@2026.03.2
+        with:
+          architectures: ${{ env.ARCHITECTURES }}
+          container-registry-password: ${{ secrets.GITHUB_TOKEN }}
+          registry-prefix: ghcr.io/johannvr
+          image-name: ${{ env.IMAGE_NAME }}
+          image-tags: |
+            ${{ env.CUSTOM_TAG }}

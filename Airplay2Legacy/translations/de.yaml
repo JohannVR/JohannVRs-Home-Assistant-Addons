@@ -1,0 +1,105 @@
+configuration:
+  airplay_name:
+    name: Airplay Name
+    description: >-
+      Der Name, der auf Ihrem iOS-Gerät angezeigt wird.
+  offset:
+    name: Playback offset
+    description: >-
+      Kann zum Anpassen von Synchronisierungsproblemen verwendet werden und kann auch auf negative Werte eingestellt werden.
+  interpolation:
+    name: Interpolation
+    description: >-
+      Sollte auf "auto" belassen werden, bei schnellem Prozessor kann man auch "soxr" wählen (sonst wird die CPU überlastet und es kann zu Problemen mit dem Buffer kommen, also kein Ton oder Aussetzer). Auf ARM-Prozessoren funktioniert "soxr" möglicherweise nicht.
+  enabled:
+    name: Enable MQTT
+    description: >-
+      Auf "Nein" setzen, um MQTT zu deaktivieren, und auf "Ja", um es zu aktivieren.
+  mqtt_host:
+    name: MQTT host
+    description: >-
+      IP oder Hostname des MQTT-Hosts (127.0.0.1 sollte in den meisten Fällen funktionieren)
+  mqtt_publish_cover:
+    name: MQTT publish cover
+    description: >-
+      Wenn auf "Ja" gesetzt, kann MQTT das Cover übertragen (was zu einer höheren Belastung des MQTT-Brokers führen kann).
+  output_backend:
+    name: Output Backend
+    description: >-
+      Sollte auf "pa" belassen werden, sonst funktioniert Audio normalerweise nicht.
+  default_airplay_volume:
+    name: Default Airplay Volume
+    description: >-
+      Legt die Standardlautstärke für eine neue Sitzung fest (falls die letzte Sitzung laut war). Der Standardwert ist "-24.0".
+  volume_max_db:
+    name: Maximum Volume
+    description: >-
+      Zur Einstellung der maximalen Lautstärke [in dB] muss ein Dezimalpunkt vorhanden sein. Z. B. "-10.0". Standard ist "0.0".
+      Die Einstellung muss im Bereich des Mixers liegen (0.0 bis -96.2 für den Standard-Software-Mixer).
+      Wenn Sie den Hardware-Mixer (siehe unten) wählen, ist der Bereich ungetestet (0.0 bis -??.?).
+  output_format:
+    name: Output Bit Depth Format
+    description: >-
+      Die Standardeinstellung ist "auto", wobei 16 Bit verwendet werden (und die Byte-Reihenfolge mit der Ihres Prozessors übereinstimmt).
+      Kann auch "U8", "S8", "S16", "S16_LE", "S16_BE", "S24", "S24_LE", "S24_BE", "S24_3LE", "S24_3BE", "S32", "S32_LE" oder "S32_BE" sein, das Gerät muss jedoch die Verarbeitung unterstützen.
+      Wenn Sie eine Software-Lautstärkeregelung verwenden und 24-Bit- oder 32-Bit-DACs nutzen können, kann bei größeren Samples Dithering auftreten, wodurch das Grundrauschen deutlich verringert wird.
+  output_rate:
+    name: Output Sampling Rate
+    description: >-
+      Die Standardeinstellung ist "auto" und verwendet 44100 Hz.
+      Es können auch Vielfache von 44100 verwendet werden, z. B. 88200, 176400 oder 352800 Hz. Das Ausgabegerät muss jedoch in der Lage sein, diese Werte zu verarbeiten.
+      Dies erfolgt durch einfache Sample-Replikation und ohne Interpolation.
+      Ungetestet (und wahrscheinlich unmöglich oder interpoliert) sind 48000, 96000 und 192000.
+  use_precision_timing:
+    name: Precision timing
+    description: >-
+      Mit dieser optionalen erweiterten Einstellung steuern Sie, wie Shairport Sync Timing-Informationen erfasst.
+      Die Standardeinstellung ist "Auto". Handelt es sich bei dem Ausgabegerät um ein echtes Hardwaregerät, wird Präzisionstiming verwendet.
+      Wählen Sie "Nein" für ein kompatibleres Standardtiming. Wählen Sie "Ja", um die Verwendung von Präzisionstiming zu erzwingen, was zu Problemen führen kann.
+  disable_standby_mode:
+    name: Disable Standby Mode
+    description: >-
+      Die Standardeinstellung ist "nie", jedoch nur aus Gründen der Abwärtskompatibilität.
+      Die Einstellung "immer" verhindert, dass der DAC in den Standby-Modus wechselt.
+      Die Einstellung "automatisch" verhindert den Standby-Modus während der Musikwiedergabe (Shairport-Sync ist aktiv).
+  high_threshold_airplay_volume:
+    name: Loud Volume Threshold
+    description: >-
+      Eine Airplay-Lautstärke, die größer oder gleich diesem Wert ist, gilt als "sehr laut".
+      Wenn Sie unter diesem Schwellenwert liegen, wird die letzte Lautstärkeeinstellung gespeichert und für die nächste Sitzung erneut angewendet.
+      Wenn Sie beim letzten Mal eine sehr hohe Lautstärke verwendet haben, wird in der nächsten Sitzung auf die Standard-Airplay-Lautstärke zurückgegriffen.
+  mixer_control_name:
+    name: Mixer control name
+    description: >-
+      Der Name des Mixers zur Regelung der Ausgangslautstärke. Standardmäßig "Kopfhörer". Wenn nicht angegeben, wird kein Mixer verwendet und die Lautstärke per Software geregelt.
+      Bei Verwendung eines USB-DAC empfiehlt sich die Verwendung von "PCM", um den Hardware-Mixer zur Lautstärkeregelung zu aktivieren.
+  mixer_control_index:
+    name: Output Device Index (Mixer control)
+    description: >-
+      Standardmäßig "0". Wenn Sie nur ein Audiogerät in Ihrem Rechner haben, befindet sich dieses wahrscheinlich auf Index "0".
+      Wenn Sie ein zusätzliches Gerät (z. B. einen USB-DAC) verwenden, befindet es sich möglicherweise auf Index "1". Sie können den Index im Terminal mit "ha audio info" überprüfen.
+  volume_control_combined_hardware_priority:
+    name: Prioritize Hardware Volume Control
+    description: >-
+      Die Standardeinstellung ist "Nein". Dadurch wird nur die (verlustbehaftete) Software-Lautstärkeregelung verwendet.
+      Die Einstellung "Ja" erweitert den Lautstärkebereich durch die Kombination des zuerst verwendeten Hardware-Mixers mit dem später verwendeten Software-Mixer.
+  drift_tolerance_in_seconds:
+    name: Drift Tolerance
+    description:  >-
+      Der Standardwert ist "0.002" Sekunden.
+      Erlauben Sie einen Zeitfehler von dieser Anzahl von Sekunden Abweichung von der exakten Synchronisierung, bevor Sie versuchen, ihn zu korrigieren.
+  resync_threshold_in_seconds:
+    name: Resync Threshold
+    description:  >-
+      Der Standardwert ist "0.050" Sekunden.
+      Ein Synchronisationsfehler, der diese Anzahl von Sekunden überschreitet, führt zu einer Neusynchronisierung. Bei 0.0 Sekunden wird sie deaktiviert.
+  resync_recovery_time_in_seconds:
+    name: Resync Recovery Time
+    description: >-
+      Der Standardwert ist "0.100" Sekunden.
+      Berücksichtigen Sie diese zusätzliche Zeit für die Wiederherstellung nach einer späten Resynchronisierung. Erhöhen Sie den Wert in einer virtuellen Maschine, möglicherweise auf 0.5
+  audio_backend_buffer_desired_length_in_seconds:
+    name: Buffer Length
+    description: >-
+      Der Standardwert beträgt "0.2" Sekunden im Alsa-Backend, 0.35 Sekunden im PA-Backend und 1.0 Sekunden in allen anderen Fällen.
+      Bei zu niedrigem Wert kommt es auf leistungsschwachen Rechnern zu einem Pufferunterlauf. Bei zu langen Werten wird die Reaktionszeit auf Volumenänderungen störend.

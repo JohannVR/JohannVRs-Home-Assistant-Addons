@@ -1,0 +1,105 @@
+configuration:
+  airplay_name:
+    name: Airplay Name
+    description: >-
+      The Name that will show up on your iOS device. 
+  offset:
+    name: Playback offset
+    description: >-
+      Can be used to adjust syncing issues, can also be set to negative values.
+  interpolation:
+    name: Interpolation
+    description: >-
+      Should be left on "auto", you can choose "soxr" if you have a fast processor (otherwise, the CPU will be overloaded and there might be problems with the buffer, so no sound or dropouts). "soxr" might not work on ARM processors.
+  enabled:
+    name: Enable MQTT
+    description: >-
+      Set to "no" to disable MQTT, and to "yes" to enable it.
+  mqtt_host:
+    name: MQTT host
+    description: >-
+      IP or hostname of the MQTT host (127.0.0.1 should work in most cases)
+  mqtt_publish_cover:
+    name: MQTT publish cover
+    description: >-
+      When set to yes, it allows MQTT to transmit the cover (might lead to more load on the MQTT broker)
+  output_backend:
+    name: Output Backend
+    description: >-
+      Should be left on "pa", otherwise audio usually wont work.
+  default_airplay_volume:
+    name: Default Airplay Volume
+    description: >-
+      Will set the standard volume for a new session (if the last session was loud). Default is "-24.0"
+  volume_max_db:
+    name: Maximum Volume
+    description: >-
+      Must have a decimal point in it, to set the maximum volume [in dB]. E.g. "-10.0". Default is "0.0". 
+      The setting must be in the mixers range (0.0 to -96.2 for the standard software mixer). 
+      If you choose the hardware mixer (below) the range is untested (0.0 to -??.?)
+  output_format:
+    name: Output Bit Depth Format
+    description: >-
+      Default is "auto" which uses 16 bit (and the endianness matching that of your processor)
+      Can also be "U8", "S8", "S16", "S16_LE", "S16_BE", "S24", "S24_LE", "S24_BE", "S24_3LE", "S24_3BE", "S32", "S32_LE" or "S32_BE" but the device must have the the capability to process it.
+      If you are using software volume control and can take advantage of 24-bit or 32-bit DACs. Dithering can occur on a larger sample, making the noise floor very much lower.
+  output_rate:
+    name: Output Sampling Rate
+    description: >-
+      Default is "auto" which uses 44100 hz
+      Can also be multiples of 44100 which means 88200, 176400 or 352800, but the output device must have the capability to process it.
+      This is done using simple sample replication and without interpolation.
+      Untested (and probably impossible or interpolated) are 48000, 96000 and 192000
+  use_precision_timing:
+    name: Precision timing
+    description: >-
+      Use this optional advanced setting to control how Shairport Sync gathers timing information.
+      Default is "auto". If the output device is a real hardware device, precision timing will be used.
+      Choose "no" for more compatible standard timing, choose "yes" to force the use of precision timing, which may cause problems.
+  disable_standby_mode:
+    name: Disable Standby Mode
+    description: >-
+      Default is "never", but only for backwards compatibility.
+      Setting "always" prevents the DAC from entering the standby mode.
+      Setting "auto" prevents standby mode while music is playing (shairport-sync is active). 
+  high_threshold_airplay_volume:
+    name: Loud Volume Threshold
+    description: >-
+      Airplay volume greater or equal to this is "very loud". 
+      If you are below this Threshold, it will remember the last volume setting and reapply it to the next session.
+      If you listened to a very loud volume last time, it will fall back to the Default Airplay Volume in the next session.
+  mixer_control_name:
+    name: Mixer control name
+    description: >-
+      The name of the mixer to use to adjust output volume. Default "Headphone". If not specified, no mixer is used and volume in adjusted in software.
+      If you use a USB DAC you probably want to use "PCM" to enable the hardware mixer for volume control.
+  mixer_control_index:
+    name: Output Device Index (Mixer control)
+    description: >-
+      Default "0". If you have only one Audio device in your machine this will probably be on index "0".
+      If you use an additional device (e.g. a USB-DAC) it might be on index "1". You can check the index in in the Terminal using "ha audio info".
+  volume_control_combined_hardware_priority:
+    name: Prioritize Hardware Volume Control
+    description: >-
+      Default is "no", which will only use (lossy) software volume control. 
+      Setting "yes" will extend the volume range by combining the hardware mixer (used first) with the software mixer (used later).
+  drift_tolerance_in_seconds:
+    name: Drift Tolerance
+    description:  >-
+      Default is "0.002" seconds.
+      Alow a timing error of this number of seconds of drift away from exact synchronisation before attempting to correct it
+  resync_threshold_in_seconds:
+    name: Resync Threshold
+    description:  >-
+      Default is "0.050" seconds
+      A synchronisation error greater than this number of seconds will cause resynchronisation; 0.0 disables it
+  resync_recovery_time_in_seconds:
+    name: Resync Recovery Time
+    description: >-
+      Default is "0.100" seconds
+      Allow this extra time to recover after a late resync. Increase the value, possibly to 0.5, in a virtual machine.
+  audio_backend_buffer_desired_length_in_seconds:
+    name: Buffer Length
+    description: >-
+      Default is 0.2 seconds in the alsa backend, 0.35 seconds in the pa backend and 1.0 seconds otherwise.
+      If set too small, buffer underflow occurs on low-powered machines. Too long and the response time to volume changes becomes annoying.

@@ -1,0 +1,49 @@
+name: "Airplay 2 Legacy for Home Assistant"
+description: "Adds Airplay 2 capabilities to Home Assistant (Legacy Edition)"
+url: https://github.com/JohannVR/JohannVRs-Home-Assistant-Addons/tree/main/Airplay2Legacy
+version: "1.0.0"
+slug: "airplay2legacy"
+init: false
+arch:
+  - aarch64
+  - amd64
+  - armv7
+boot: "auto"
+host_network: true
+audio: true
+options:
+  airplay_name: "Hass.io"
+  offset: "0.0"
+  interpolation: "auto"
+  enabled: "no"
+  mqtt_host: "core-mosquitto"
+  mqtt_username: "user"
+  mqtt_password: "password"
+  mqtt_publish_cover: "no"
+  output_backend: "pa"
+  default_airplay_volume: "-24.0"
+schema:
+  airplay_name: str
+  offset: str
+  interpolation: str
+  enabled: str
+  mqtt_host: str
+  mqtt_username: str
+  mqtt_password: password
+  mqtt_publish_cover: str
+  output_backend: str
+  default_airplay_volume: str
+  volume_max_db: str?
+  output_format: str?
+  output_rate: str?
+  use_precision_timing: str?
+  disable_standby_mode: str?
+  high_threshold_airplay_volume: str?
+  mixer_control_name: str?
+  mixer_control_index: str?
+  volume_control_combined_hardware_priority: str?
+  drift_tolerance_in_seconds: str?
+  resync_threshold_in_seconds: str?
+  resync_recovery_time_in_seconds: str?
+  audio_backend_buffer_desired_length_in_seconds: str?
+image: ghcr.io/johannvr/{arch}-ha-airplay2-legacy
