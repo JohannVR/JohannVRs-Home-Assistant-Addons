@@ -26,7 +26,6 @@ if [ -f "$CONFIG_PATH" ]; then
     export volume_control_combined_hardware_priority="${volume_control_combined_hardware_priority:=no}"
     export drift_tolerance_in_seconds="${drift_tolerance_in_seconds:=0.002}"
     export resync_threshold_in_seconds="${resync_threshold_in_seconds:=0.050}"
-    export audio_backend_buffer_desired_length_in_seconds="${audio_backend_buffer_desired_length_in_seconds:=0.2}"
 
 else
     echo "Error: $CONFIG_PATH not found."
