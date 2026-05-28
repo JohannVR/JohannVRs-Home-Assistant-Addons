@@ -46,5 +46,4 @@ schema:
   volume_control_combined_hardware_priority: str?
   drift_tolerance_in_seconds: str?
   resync_threshold_in_seconds: str?
-  audio_backend_buffer_desired_length_in_seconds: str?
 image: ghcr.io/johannvr/{arch}-ha-airplay2
