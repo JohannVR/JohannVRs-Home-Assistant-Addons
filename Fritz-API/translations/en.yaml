@@ -2,7 +2,7 @@ configuration:
   repeater_ip:
     name: Repeater IP
     description: >-
-      IP address of the Repeater 
+      IP address of the Repeater
   repeater_login:
     name: Repeater Login Name
     description: >-
@@ -15,6 +15,10 @@ configuration:
     name: MQTT IP
     description: >-
       IP Address of MQTT Broker (127.0.0.1 usually works)
+  mqtt_port:
+    name: MQTT Port
+    description: >-
+      Port of the MQTT Broker (1883 for unencrypted, 8883 for TLS)
   mqtt_user:
     name: MQTT user
     description: >-
@@ -31,3 +35,8 @@ configuration:
     name: MAC Adresses
     description: >-
       Comma seperated list of the device mac addresses (lower-case and use colons)
+  log_level:
+    name: Log Level
+    description: >-
+      How much detail to show in the add-on log. Use DEBUG for troubleshooting,
+      INFO for normal operation.
